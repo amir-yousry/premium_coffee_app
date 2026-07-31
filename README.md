@@ -100,8 +100,8 @@ lib/
 │   ├──Routing
 │   ├──Helpers
 │   ├──Theming
-│   ├── Widgets
-│   ├── 
+│   └── Widgets
+│   
 ├── features/
 │   ├── home/
 │   │   ├── data
