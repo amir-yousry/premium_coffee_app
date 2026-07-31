@@ -78,10 +78,10 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          bottom: 30,
-                          right: 10,
-                          child: IconButton(
-                            onPressed: () {
+                          bottom: 40,
+                          right: 25,
+                          child: GestureDetector(
+                            onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -89,7 +89,18 @@ class HomeScreen extends StatelessWidget {
                                 ),
                               );
                             },
-                            icon: Icon(Icons.forward_outlined, size: 30),
+                            child: Container(
+                              padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: Colors.black),
+                              ),
+                              child: Icon(
+                                Icons.arrow_forward_sharp,
+                                color: Colors.black54,
+                                size: 15,
+                              ),
+                            ),
                           ),
                         ),
                       ],
