@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:premium_coffee_app/features/home/ui/home_screen.dart';
+import 'package:premium_coffee_app/features/home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
