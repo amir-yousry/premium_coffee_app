@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:premium_coffee_app/core/data/drinks.dart';
-import 'package:premium_coffee_app/features/coffee_details/ui/coffee_details_screen.dart';
+import 'package:premium_coffee_app/features/details/ui/coffee_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
