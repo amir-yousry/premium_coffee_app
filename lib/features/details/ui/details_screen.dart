@@ -14,7 +14,7 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
   //int selectedIndex = 0;
   //int? selectedSize;
   //bool isSelectedSize = false;
-  //double drinkSize = 1.1;
+  double drinkSize = 1.1;
 
   @override
   void initState() {
@@ -31,8 +31,9 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          
           Positioned(
-            top: 80,
+            top: 50,
             left: 20,
             right: 20,
             child: Row(
@@ -60,6 +61,38 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
                 ),
               ],
             ),
+          ),
+
+          PageView.builder(
+            controller: _controller,
+            itemCount: drinks.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              final scale = drinkSize - (_currentPage - index).abs() * 1;
+              final translateY = (_currentPage - index).abs() * 400;
+              return Transform.translate(
+                offset: Offset(translateY, 0),
+                child: Transform.scale(
+                  scale: scale.clamp(0.5, 1.0),
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Image.asset(drinks[index].image, height: 650),
+                          Positioned(
+                            bottom: 100,
+                            right: 0,
+                            left: 0,
+                            child: Image.asset("assets/drinks/Ellipse 2.png"),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
