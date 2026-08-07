@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:premium_coffee_app/core/data/drinks.dart';
+import 'package:premium_coffee_app/features/details/ui/widgets/toggle_widget.dart';
 
 class CoffeeDetailsScreen extends StatefulWidget {
   const CoffeeDetailsScreen({super.key});
@@ -11,9 +13,7 @@ class CoffeeDetailsScreen extends StatefulWidget {
 class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
   final PageController _controller = PageController(viewportFraction: 0.50);
   double _currentPage = 0;
-  //int selectedIndex = 0;
-  //int? selectedSize;
-  //bool isSelectedSize = false;
+  int? selectedSize;
   double drinkSize = 1.1;
 
   @override
@@ -31,7 +31,6 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          
           Positioned(
             top: 50,
             left: 20,
@@ -93,6 +92,57 @@ class _CoffeeDetailsScreenState extends State<CoffeeDetailsScreen> {
                 ),
               );
             },
+          ),
+
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 60,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(4, (index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedSize = index;
+                        });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(11),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: selectedSize == index
+                              ? Colors.orange
+                              : Colors.white,
+                          border: Border.all(
+                            color: selectedSize == index
+                                ? Colors.orange
+                                : Colors.black,
+                          ),
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/Vector.svg",
+                          colorFilter: ColorFilter.mode(
+                            selectedSize == index ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+                ),
+                SizedBox(height: 40),
+                Row(
+                  children: [
+                    Expanded(child: DrinkToggle()),
+                    SizedBox(width: 40),
+                    Expanded(child: QuantitySelector()),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
